@@ -1,0 +1,10 @@
+.item {
+  list-style: none;
+  padding: 0.4em 1em 0.5em;
+  color: white;
+  font-family: Verdana, Tahoma, sans-serif;
+  font-size: 16px;
+  border-radius: 0.5em;
+  transition: 0.3s;
+  cursor: default;
+}
