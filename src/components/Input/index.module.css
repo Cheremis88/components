@@ -1,0 +1,21 @@
+.input {
+  width: 100%;
+  font-size: 22px;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 0.2em;
+  outline: 2px solid #333;
+}
+
+.input:focus {
+  outline-color: rgb(11, 190, 11);
+}
+
+.input::placeholder {
+  color: #bebebe;
+}
+
+.input:focus::placeholder {
+  color: transparent;
+}
