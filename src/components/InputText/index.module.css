@@ -1,19 +1,19 @@
 .input {
-  width: 100%;
-  font-size: 22px;
+  font-size: 16px;
   font-family: Arial, Helvetica, sans-serif;
   padding: 5px 10px;
+  color: #AA00FF;
   border: none;
   border-radius: 0.2em;
-  outline: 2px solid #333;
+  outline: 2px solid #4527A0;
 }
 
 .input:focus {
-  outline-color: rgb(11, 190, 11);
+  outline-color: #AA00FF;
 }
 
 .input::placeholder {
-  color: #bebebe;
+  color: #E1BEE7;
 }
 
 .input:focus::placeholder {

@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Button from '.';
+import ListForm from '.';
 
-const meta: Meta<typeof Button> = {
-  title: 'Mini/Button',
-  component: Button,
+const meta: Meta<typeof ListForm> = {
+  title: 'Middle/ListForm',
+  component: ListForm,
   parameters: {
     layout: 'centered',
   },
@@ -14,6 +14,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: {
-    children: 'Добавить'
+    callback: s => console.log(s)
   },
 };
