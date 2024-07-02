@@ -24,10 +24,8 @@ function ListWorker() {
 
   return (
     <section className={styles.wrapper}>
-      <Title separator>Работа со списком</Title>
       <ListForm add={addItem} filter={addFilter} />
-      <Title separator>Список фильмов</Title>
-      <ColorList />
+      <ColorList list={filteredList} />
     </section>
   );
 }
