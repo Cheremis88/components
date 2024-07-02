@@ -1,26 +1,30 @@
 import InputText from '../InputText';
 import Button from '../Button';
 import styles from './index.module.css';
-import { FormEvent, useRef } from 'react';
+import { ChangeEvent, FormEvent, useRef } from 'react';
 
 interface ListFormProps {
-  callback: (value: string) => void;
+  add: (name: string) => void;
+  filter: (value: string) => void;
 }
 
-function ListForm({ callback }: ListFormProps) {
+function ListForm({ add, filter }: ListFormProps) {
 
   const inputRef = useRef<HTMLInputElement>(null);
 
   function handleSubmit(evt: FormEvent) {
     evt.preventDefault();
-    const item = inputRef.current?.value;
-    if (!item || !item.trim()) return;
-    callback(item);
+    const value = inputRef.current?.value;
+    if (!value || value.trim() === ' ') return;
+    add(value);
+  }
+
+  function handleChange(evt: ChangeEvent<HTMLInputElement>) {
+    filter(evt.target.value);
   }
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
-      <h2 className={styles.title}>Работа со списком</h2>
       <label className={styles.label}>
         <span>Название фильма</span>
         <InputText inputRef={inputRef} placeholder="Отступники" />
@@ -28,7 +32,7 @@ function ListForm({ callback }: ListFormProps) {
       <Button type="submit">Добавить</Button>
       <label className={styles.label}>
         <span>Фильтр списка</span>
-        <InputText placeholder="Начните ввод" />
+        <InputText placeholder="Начните ввод" onChange={handleChange} />
       </label>
     </form>
   );

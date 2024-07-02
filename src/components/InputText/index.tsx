@@ -1,9 +1,10 @@
+import { ChangeEvent } from 'react';
 import styles from './index.module.css';
 
 interface InputTextProps {
   placeholder: string;
   inputRef?: React.RefObject<HTMLInputElement>;
-  onChange?: () => void;
+  onChange?: (evt: ChangeEvent<HTMLInputElement>) => void;
 }
 
 function InputText({ placeholder, inputRef, onChange }: InputTextProps) {
