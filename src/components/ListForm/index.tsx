@@ -15,7 +15,7 @@ function ListForm({ add, filter }: ListFormProps) {
   function handleSubmit(evt: FormEvent) {
     evt.preventDefault();
     const value = inputRef.current?.value;
-    if (!value || value.trim() === ' ') return;
+    if (!value || !value.trim()) return;
     add(value);
   }
 
