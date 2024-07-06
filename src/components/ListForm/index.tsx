@@ -6,9 +6,10 @@ import { ChangeEvent, FormEvent, useRef } from 'react';
 interface ListFormProps {
   add: (name: string) => void;
   filter: (value: string) => void;
+  error: string;
 }
 
-function ListForm({ add, filter }: ListFormProps) {
+function ListForm({ add, filter, error }: ListFormProps) {
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -17,9 +18,18 @@ function ListForm({ add, filter }: ListFormProps) {
     const value = inputRef.current?.value;
     if (!value || !value.trim()) return;
     add(value);
+    inputRef.current.value = '';
   }
 
   function handleChange(evt: ChangeEvent<HTMLInputElement>) {
+    
+  }
+
+  function handleFilter(evt: ChangeEvent<HTMLInputElement>) {
+    const spaces = evt.target.value.at(-1) === ' ' && evt.target.value.at(-2) === ' ';
+    if (spaces) {
+      evt.target.value = evt.target.value.slice(0, -1);
+    }
     filter(evt.target.value);
   }
 
@@ -28,11 +38,12 @@ function ListForm({ add, filter }: ListFormProps) {
       <label className={styles.label}>
         <span>Название фильма</span>
         <InputText inputRef={inputRef} placeholder="Отступники" />
+        {error && <span className={styles.error}>{error}</span>}
       </label>
       <Button type="submit">Добавить</Button>
       <label className={styles.label}>
         <span>Фильтр списка</span>
-        <InputText placeholder="Начните ввод" onChange={handleChange} />
+        <InputText placeholder="Начните ввод" onChange={handleFilter} />
       </label>
     </form>
   );

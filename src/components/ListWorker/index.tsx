@@ -10,8 +10,14 @@ function ListWorker() {
 
   const [list, setList] = useState(() => addColor(FILMS));
   const [filter, setFilter] = useState('');
+  const [error, setError] = useState('');
 
   function addItem(name: string) {
+    const isDuplicate = list.some(item => item.title.toLocaleLowerCase() === name.toLocaleLowerCase());
+    if (isDuplicate) {
+      setError('Такое название уже есть в списке');
+      return;
+    }
     const item = addColor(name);
     setList([...list, ...item]);
   }
@@ -24,7 +30,7 @@ function ListWorker() {
 
   return (
     <section className={styles.wrapper}>
-      <ListForm add={addItem} filter={addFilter} />
+      <ListForm add={addItem} filter={addFilter} error={error} />
       <ColorList list={filteredList} />
     </section>
   );
