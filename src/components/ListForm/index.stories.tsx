@@ -14,6 +14,12 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: {
-    callback: s => console.log(s)
+    add(value) {
+      console.log(value)
+    },
+    filter(value) {
+      console.log(value)
+    },
+    error: 'Пример ошибки'
   },
 };
